@@ -74,10 +74,10 @@ class LRN(nn.Module):
 
 class AlexNet(nn.Module):
 
-    def __init__(self, num_classes=1000):
+    def __init__(self, input_channels, num_classes=1000):
         super(AlexNet, self).__init__()
         self.features = nn.Sequential(
-            nn.Conv2d(3, 96, kernel_size=11, stride=4, padding=0),
+            nn.Conv2d(input_channels, 96, kernel_size=11, stride=4, padding=0),
             nn.ReLU(inplace=True),
             LRN(local_size=5, alpha=0.0001, beta=0.75),
             nn.MaxPool2d(kernel_size=3, stride=2),
